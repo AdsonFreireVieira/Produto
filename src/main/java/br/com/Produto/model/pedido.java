@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -33,11 +34,29 @@ public class pedido {
 	
 	@Column(name="status")
 	private int status;
-     
+   
 	@OneToMany
-	private ItemPedido ipedido;
+	private ItemPedido item;
 	
+	@ManyToOne
+	private Cliente cliente;
 	
+	public ItemPedido getItem() {
+		return item;
+	}
+
+	public void setItem(ItemPedido item) {
+		this.item = item;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	public Integer getId() {
 		return id;
 	}

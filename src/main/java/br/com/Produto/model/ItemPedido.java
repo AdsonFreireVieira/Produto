@@ -37,6 +37,22 @@ public class ItemPedido {
 	@JoinColumn(name="tbl_Pedido")
 	private List<pedido> pedidos;
 
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
+	}
+
+	public List<pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
 	public Integer getId() {
 		return id;
 	}
