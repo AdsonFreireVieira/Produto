@@ -1,7 +1,5 @@
 package br.com.Produto.model;
 
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,29 +26,31 @@ public class ItemPedido {
 	
 	@Column(name="quantidade")
 	private int quantidade;
-	
-	@ManyToOne()
-	@JoinColumn(name="tbl_Produto")
-	private List<Produto> produto;
-	
-	@ManyToOne
-	@JoinColumn(name="tbl_Pedido")
-	private List<pedido> pedidos;
 
-	public List<Produto> getProduto() {
+    @ManyToOne
+    @JoinColumn(name="tbl_Pedido")
+    private pedido pedido;
+    
+    
+    @ManyToOne
+    @JoinColumn(name="tbl_Produto")
+    private Produto produto;
+    
+    
+	public pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(pedido pedido) {
+		this.pedido = pedido;
+	}
+
+	public Produto getProduto() {
 		return produto;
 	}
 
-	public void setProduto(List<Produto> produto) {
+	public void setProduto(Produto produto) {
 		this.produto = produto;
-	}
-
-	public List<pedido> getPedidos() {
-		return pedidos;
-	}
-
-	public void setPedidos(List<pedido> pedidos) {
-		this.pedidos = pedidos;
 	}
 
 	public Integer getId() {

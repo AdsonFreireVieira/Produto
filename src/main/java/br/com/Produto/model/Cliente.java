@@ -1,5 +1,7 @@
 package br.com.Produto.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,7 +40,6 @@ public class Cliente {
 	@Column(name="numero")
 	private int  numero;
 	
-
 	public Integer getId() {
 		return id;
 	}

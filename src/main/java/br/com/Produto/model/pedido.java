@@ -1,61 +1,52 @@
-	package br.com.Produto.model;
+package br.com.Produto.model;
 
 import java.util.Date;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="tbl_pedido")
+@Table(name = "tbl_pedido")
 public class pedido {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="num_Pedido")
-     private Integer id;
-	
-	@Column(name="data")
+	@Column(name = "num_Pedido")
+	private Integer id;
+
+	@Column(name = "data")
 	private Date data;
-	
-	@Column(name="valorBruto")
-	private  Double valorBruto;
-	
-	@Column(name="desconto")
+
+	@Column(name = "valorBruto")
+	private Double valorBruto;
+
+	@Column(name = "desconto")
 	private Double desconto;
-	
-	@Column(name="valorTotal")
+
+	@Column(name = "valorTotal")
 	private Double valortotal;
-	
-	@Column(name="status")
+
+	@Column(name = "status")
 	private int status;
-   
-	@OneToMany
-	private ItemPedido item;
-	
+
 	@ManyToOne
+	@JoinColumn(name = "tbl_Cliente")
 	private Cliente cliente;
-	
-	public ItemPedido getItem() {
-		return item;
-	}
 
-	public void setItem(ItemPedido item) {
-		this.item = item;
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("pedido")
+	private List<ItemPedido> itens;
 
 	public Integer getId() {
 		return id;
@@ -71,6 +62,22 @@ public class pedido {
 
 	public void setData(Date data) {
 		this.data = data;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public List<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<ItemPedido> itens) {
+		this.itens = itens;
 	}
 
 	public Double getValorBruto() {
@@ -104,6 +111,5 @@ public class pedido {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	
-	
-	}
+
+}
