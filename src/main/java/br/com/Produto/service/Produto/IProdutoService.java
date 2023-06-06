@@ -9,7 +9,7 @@ public interface IProdutoService {
 	public Produto cadastrarNovo(Produto novo);
 	public Produto alterar (Produto produto);
 	public List<Produto> listar();
-	public Produto budscarPorId(int id);
+	public Produto buscarPorId(int id);
 	public void deletar(int deletar);
 	
 	

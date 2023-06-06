@@ -27,11 +27,11 @@ public class ServiceProdutoImpl  implements IProdutoService{
 	@Override
 	public List<Produto> listar() {
 	
-		return (List<Produto>) dao.findAllById(null);
+		return  (List<Produto>) dao.findAll();
 	}
 
 	@Override
-	public Produto budscarPorId(int id) {
+	public Produto buscarPorId(int id) {
 		
 		return dao.findById(id).orElse(null);
 	}

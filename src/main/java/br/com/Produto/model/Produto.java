@@ -36,16 +36,6 @@ public class Produto {
 		return id;
 	}
     
-	public List<ItemPedido> getItens() {
-		return itens;
-	}
-
-	public void setItens(List<ItemPedido> itens) {
-		this.itens = itens;
-	}
-
-	@OneToMany
-	private List<ItemPedido> itens;
 	
 	public void setId(Integer id) {
 		this.id = id;
