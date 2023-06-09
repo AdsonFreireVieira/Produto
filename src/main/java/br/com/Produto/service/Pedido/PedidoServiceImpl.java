@@ -41,4 +41,10 @@ public class PedidoServiceImpl implements IPedidoService{
 		return dao.findById(id).orElse(null);
 	}
 
+	@Override
+	public void deletar(int id) {
+	    dao.deleteById(id);
+		
+	}
+
 }

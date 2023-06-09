@@ -10,4 +10,5 @@ public interface IPedidoService {
 	public pedido alterarDados(pedido alterar);
 	public List<pedido> listar();
 	public pedido buscarporId(int id);
+	public void deletar(int id);
 }
