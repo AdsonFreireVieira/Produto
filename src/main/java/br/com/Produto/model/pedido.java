@@ -1,7 +1,9 @@
 package br.com.Produto.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
+
+import org.hibernate.annotations.Cascade;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -17,51 +19,82 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tbl_pedido")
-public class pedido {
-
+@Table(name="tbl_pedidos")
+public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "num_Pedido")
-	private Integer id;
-
-	@Column(name = "data")
-	private Date data;
-
-	@Column(name = "valorBruto")
-	private Double valorBruto;
-
-	@Column(name = "desconto")
-	private Double desconto;
-
-	@Column(name = "valorTotal")
-	private Double valortotal;
-
-	@Column(name = "status")
+	@Column(name="numPedido")
+	private Integer numPedido;
+	
+	@Column(name="data")
+	private LocalDate data;
+	
+	@Column(name="status")
 	private int status;
-
+	
+	@Column(name="desconto")
+	private Double desconto;
+	
+	@Column(name="quatidade")
+	private int quantidade;
+	
+	@Column(name="valorTotal")
+	private Double valorTotal;
+	
 	@ManyToOne
-	@JoinColumn(name = "tbl_Cliente")
+	@JoinColumn(name="tbl_Cliente")
 	private Cliente cliente;
 
-	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "pedido" , cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("pedido")
 	private List<ItemPedido> itens;
 
-	public Integer getId() {
-		return id;
+	public Integer getNumPedido() {
+		return numPedido;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setNumPedido(Integer numPedido) {
+		this.numPedido = numPedido;
 	}
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public Double getDesconto() {
+		return desconto;
+	}
+
+	public void setDesconto(Double desconto) {
+		this.desconto = desconto;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public Double getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(Double valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 	public Cliente getCliente() {
@@ -79,37 +112,6 @@ public class pedido {
 	public void setItens(List<ItemPedido> itens) {
 		this.itens = itens;
 	}
-
-	public Double getValorBruto() {
-		return valorBruto;
-	}
-
-	public void setValorBruto(Double valorBruto) {
-		this.valorBruto = valorBruto;
-	}
-
-	public Double getDesconto() {
-		return desconto;
-	}
-
-	public void setDesconto(Double desconto) {
-		this.desconto = desconto;
-	}
-
-	public Double getValortotal() {
-		return valortotal;
-	}
-
-	public void setValortotal(Double valortotal) {
-		this.valortotal = valortotal;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
+	
+	
 }
