@@ -35,17 +35,17 @@ public class Pedido {
 	@Column(name="desconto")
 	private Double desconto;
 	
-	@Column(name="quatidade")
+	@Column(name="quantidade")
 	private int quantidade;
 	
-	@Column(name="valorTotal")
+	@Column(name="valortotal")
 	private Double valorTotal;
 	
 	@ManyToOne
 	@JoinColumn(name="tbl_Cliente")
 	private Cliente cliente;
 
-	@OneToMany(mappedBy = "pedido" , cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("pedido")
 	private List<ItemPedido> itens;
 

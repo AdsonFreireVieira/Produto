@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.Produto.Dao.PedidoDAO;
+import br.com.Produto.model.ItemPedido;
 import br.com.Produto.model.Pedido;
 
 @Component
@@ -17,7 +18,10 @@ public class PedidoServiceImpl implements IPedidoService{
 	@Override
 	public Pedido criarNovo(Pedido novo) {
 		
-
+		for(ItemPedido item :novo.getItens()) {
+        
+			item.setPedido(novo);
+		}
 		return dao.save(novo);
 	}
 

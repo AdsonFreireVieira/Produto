@@ -15,6 +15,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="tbl_itempedido")
 public class ItemPedido {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="num_sequencial")
@@ -23,10 +24,10 @@ public class ItemPedido {
 	@Column(name="quantidade")
 	private int quantidade;
 	
-	@Column(name="valorUnitario")
+	@Column(name="valorunitario")
 	private Double valorUnitario;
 	
-	@Column(name="valorTotal")
+	@Column(name="valortotal")
 	private Double valorTotal;
 	
 	
