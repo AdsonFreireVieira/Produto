@@ -32,6 +32,7 @@ public class ItemPedido {
 	
 	
 	
+	
 	@ManyToOne
 	@JoinColumn(name="tbl_Produto")
 	private Produto produto;
@@ -44,6 +45,27 @@ public class ItemPedido {
 	public Integer getNumSequencial() {
 		return numSequencial;
 	}
+	
+
+	public Double getValorUnitario() {
+		return valorUnitario;
+	}
+
+
+	public void setValorUnitario(Double valorUnitario) {
+		this.valorUnitario = valorUnitario;
+	}
+
+
+	public Double getValorTotal() {
+		return valorTotal;
+	}
+
+
+	public void setValorTotal(Double valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
 
 	public void setNumSequencial(Integer numSequencial) {
 		this.numSequencial = numSequencial;
@@ -73,4 +95,25 @@ public class ItemPedido {
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
+
+
+	public double getValorunitario() {
+		return valorunitario;
+	}
+
+
+	public void setValorunitario(double valorunitario) {
+		this.valorunitario = valorunitario;
+	}
+
+
+	public double getValortotal() {
+		return valortotal;
+	}
+
+
+	public void setValortotal(double valortotal) {
+		this.valortotal = valortotal;
+	}
+	
 }
