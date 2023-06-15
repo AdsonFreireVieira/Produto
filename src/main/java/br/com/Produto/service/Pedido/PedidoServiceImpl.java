@@ -21,6 +21,7 @@ public class PedidoServiceImpl implements IPedidoService {
 
 		double desconto = 0;
 		double total = 0;
+		int quant = 0;
 		
 		for (ItemPedido item : novo.getItens()) {
 
@@ -28,21 +29,23 @@ public class PedidoServiceImpl implements IPedidoService {
 		}
 		for (ItemPedido item : novo.getItens()) {
 
-			total += item.getValorTotal();
+			total += item.getValorunitario();
+			 quant = +item.getQuantidade();
 		}
-
-		novo.setValorTotal(total);
+		
+		total = total * quant;
+        
 
 		if (total > 100) {
 
 			desconto = total * 0.20;
-
 			novo.setDesconto(desconto);
-
 		}
-
-		total = total - desconto;
+		
+		novo.setQuantidade(quant);
 		novo.setValorTotal(total);
+		total = total - desconto;
+		novo.setDesconto(total);
 
 		return dao.save(novo);
 	}
