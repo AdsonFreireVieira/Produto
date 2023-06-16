@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,47 +28,44 @@ public class PedidoController {
 
 		Pedido res = service.criarNovo(pedido);
 
-		if(res != null) {
+		if (res != null) {
 			return ResponseEntity.ok().body(res);
 		}
 		return ResponseEntity.badRequest().build();
 	}
-	
+
 	@GetMapping
-	public ResponseEntity <List<Pedido>> listar(){
+	public ResponseEntity<List<Pedido>> listar() {
 		return ResponseEntity.ok().body(service.listar());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Pedido> buscarPorid(@PathVariable int id){
-		
+	public ResponseEntity<Pedido> buscarPorid(@PathVariable int id) {
+
 		Pedido res = service.buscarporId(id);
-		
-		if(res != null) {
-		  return ResponseEntity.ok(res);
+
+		if (res != null) {
+			return ResponseEntity.ok(res);
 		}
-		return ResponseEntity.notFound().build();		
+		return ResponseEntity.notFound().build();
 	}
-	
-	@PutMapping("{id}")
-	public ResponseEntity<Pedido> alterar(@PathVariable int id,@RequestBody Pedido pedido){
+
+	@PutMapping("/{id}")
+	public ResponseEntity<Pedido> alterar(@PathVariable int id, @RequestBody Pedido pedido) {
 		pedido.setNumPedido(id);
-		
+
 		Pedido res = service.alterarDados(pedido);
-		if(res != null) {
+		if (res != null) {
 			return ResponseEntity.ok().body(res);
 		}
-		
+
 		return ResponseEntity.badRequest().build();
-		
+
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deletar(@PathVariable int id) {
+		service.deletar(id);
+		return ResponseEntity.ok().body("Removed");
 	}
 }
-
-
-
-
-
-
-
-
-

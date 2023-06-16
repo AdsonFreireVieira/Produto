@@ -11,4 +11,13 @@ public interface IPedidoService {
 	public List<Pedido> listar();
 	public Pedido buscarporId(int id);
 	public void deletar(int id);
+	
+	public Double calculaDesconto(double valorTotal);
+	
+	public boolean isNumber(Double valor );
+	
+	public String statusPedido(int valorStatus);
+	
+	
+	
 }

@@ -19,35 +19,13 @@ public class PedidoServiceImpl implements IPedidoService {
 	@Override
 	public Pedido criarNovo(Pedido novo) {
 
-		double desconto = 0;
-		double total = 0;
-		int quant = 0;
-		
+
 		for (ItemPedido item : novo.getItens()) {
 
 			item.setPedido(novo);
 		}
-		for (ItemPedido item : novo.getItens()) {
 
-			total += item.getValorunitario();
-			 quant = +item.getQuantidade();
-		}
-		
-		total = total * quant;
-        
-
-		if (total > 100) {
-
-			desconto = total * 0.20;
-			novo.setDesconto(desconto);
-		}
-		
-		novo.setQuantidade(quant);
-		novo.setValorTotal(total);
-		total = total - desconto;
-		novo.setDesconto(total);
-
-		return dao.save(novo);
+	           return dao.save(novo);
 	}
 
 	@Override
@@ -72,6 +50,24 @@ public class PedidoServiceImpl implements IPedidoService {
 	public void deletar(int id) {
 		dao.deleteById(id);
 
+	}
+
+	@Override
+	public Double calculaDesconto(double valorTotal) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isNumber(Double valor) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String statusPedido(int valorStatus) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
