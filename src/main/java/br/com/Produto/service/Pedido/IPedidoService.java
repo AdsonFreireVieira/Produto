@@ -13,10 +13,8 @@ public interface IPedidoService {
 	public void deletar(int id);
 	
 	public Double calculaDesconto(double valorTotal);
-	
-	public boolean isNumber(Double valor );
-	
 	public String statusPedido(int valorStatus);
+	
 	
 	
 	
