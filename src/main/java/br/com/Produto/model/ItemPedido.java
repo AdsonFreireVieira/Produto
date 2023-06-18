@@ -25,11 +25,11 @@ public class ItemPedido {
 	private int quantidade;
 	
 	@Column(name="valorunitario")
-	private double valorunitario;
+	private Double valorunitario;
 	
 	@Column(name="valortotal")
-	private double valortotal;
-	
+	private  Double valortotal;
+
 	@ManyToOne
 	@JoinColumn(name="tbl_Produto")
 	private Produto produto;
@@ -54,17 +54,17 @@ public class ItemPedido {
 	}
 
 
-	public void setValorunitario(double valorunitario) {
+	public void setValorunitario(Double valorunitario) {
 		this.valorunitario = valorunitario;
 	}
 
 
-	public double getValortotal() {
+	public Double getValortotal() {
 		return valortotal;
 	}
 
 
-	public void setValortotal(double valortotal) {
+	public void setValortotal(Double valortotal) {
 		this.valortotal = valortotal;
 	}
 

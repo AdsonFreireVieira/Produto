@@ -39,7 +39,7 @@ public class Pedido {
 	private int quantidade;
 	
 	@Column(name="valortotal")
-	private Double valorTotal;
+	private double valorTotal;
 	
 	@ManyToOne
 	@JoinColumn(name="tbl_Cliente")
@@ -89,11 +89,11 @@ public class Pedido {
 		this.quantidade = quantidade;
 	}
 
-	public Double getValorTotal() {
+	public double getValorTotal() {
 		return valorTotal;
 	}
 
-	public void setValorTotal(Double valorTotal) {
+	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
 
@@ -112,6 +112,8 @@ public class Pedido {
 	public void setItens(List<ItemPedido> itens) {
 		this.itens = itens;
 	}
+
+	
 	
 	
 }

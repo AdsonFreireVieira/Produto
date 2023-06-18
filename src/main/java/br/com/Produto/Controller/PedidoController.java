@@ -1,5 +1,7 @@
 package br.com.Produto.Controller;
 
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +36,14 @@ public class PedidoController {
 		return ResponseEntity.badRequest().build();
 	}
 
-	@GetMapping
-	public ResponseEntity<List<Pedido>> listar() {
-		return ResponseEntity.ok().body(service.listar());
+	@GetMapping()
+	public ResponseEntity<List<Pedido>> listarTodos() {
+		
+		return ResponseEntity.ok(service.listar());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Pedido> buscarPorid(@PathVariable int id) {
+	public ResponseEntity<Pedido> buscarPorid(@PathVariable Integer id) {
 
 		Pedido res = service.buscarporId(id);
 
@@ -51,18 +54,19 @@ public class PedidoController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Pedido> alterar(@PathVariable int id, @RequestBody Pedido pedido) {
-		pedido.setNumPedido(id);
-
-		Pedido res = service.alterarDados(pedido);
-		if (res != null) {
-			return ResponseEntity.ok().body(res);
-		}
-
-		return ResponseEntity.badRequest().build();
-
+	public ResponseEntity<Pedido> alterar(@RequestBody Pedido pedido, @PathVariable int id) {
+		  pedido.setNumPedido(id);
+		
+		  Pedido resp = service.alterarDados(pedido);
+		  
+		  if(resp != null) {
+			  
+			  return ResponseEntity.ok( service.alterarDados(pedido));
+			  
+		  }
+		return ResponseEntity.notFound().build();
+		
 	}
-
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deletar(@PathVariable int id) {
 		service.deletar(id);
