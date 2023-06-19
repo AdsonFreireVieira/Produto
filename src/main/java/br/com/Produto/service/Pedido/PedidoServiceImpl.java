@@ -37,13 +37,6 @@ public class PedidoServiceImpl implements IPedidoService {
 
 		return dao.save(novo);
 	}
-
-	@Override
-	public Pedido alterarDados(Pedido alterar) {
-		// TODO Auto-generated method stub
-		return dao.save(alterar);
-	}
-
 	@Override
 	public List<Pedido> listar() {
 		// TODO Auto-generated method stub

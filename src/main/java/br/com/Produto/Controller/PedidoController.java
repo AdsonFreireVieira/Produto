@@ -36,7 +36,7 @@ public class PedidoController {
 		return ResponseEntity.badRequest().build();
 	}
 
-	@GetMapping()
+	@GetMapping
 	public ResponseEntity<List<Pedido>> listarTodos() {
 		
 		return ResponseEntity.ok(service.listar());
@@ -51,21 +51,7 @@ public class PedidoController {
 			return ResponseEntity.ok(res);
 		}
 		return ResponseEntity.notFound().build();
-	}
-
-	@PutMapping("/{id}")
-	public ResponseEntity<Pedido> alterar(@RequestBody Pedido pedido, @PathVariable int id) {
-		  pedido.setNumPedido(id);
-		
-		  Pedido resp = service.alterarDados(pedido);
-		  
-		  if(resp != null) {
-			  
-			  return ResponseEntity.ok( service.alterarDados(pedido));
-			  
-		  }
-		return ResponseEntity.notFound().build();
-		
+	
 	}
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deletar(@PathVariable int id) {
