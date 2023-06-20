@@ -36,6 +36,20 @@ public class PedidoController {
 		return ResponseEntity.badRequest().build();
 	}
 
+	@PutMapping("/{id}")
+	public ResponseEntity<Pedido> alterar(@RequestBody Pedido pedido , @PathVariable int id){
+		
+		pedido.setNumPedido(id);
+		
+		Pedido ped = service.alterarDados(pedido);
+		
+		if(ped != null) {
+			
+			return ResponseEntity.ok().body(ped);
+		}
+		return ResponseEntity.badRequest().build();
+		
+	}	
 	@GetMapping
 	public ResponseEntity<List<Pedido>> listarTodos() {
 		
