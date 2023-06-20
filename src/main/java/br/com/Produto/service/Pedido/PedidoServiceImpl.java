@@ -29,6 +29,11 @@ public class PedidoServiceImpl implements IPedidoService {
 			
 			itens.setPedido(pedido);
 		}
+		
+		for(ItemPedido item : pedido.getItens()) {
+			item.setValortotal(item.getValorunitario() * item.getQuantidade());
+			pedido.setValorTotal(item.getValortotal());
+		}
 		 
 		return dao.save(pedido);
 	}
