@@ -32,7 +32,7 @@ public class PedidoServiceImpl implements IPedidoService {
 		
 		for(ItemPedido item : pedido.getItens()) {
 			item.setValortotal(item.getValorunitario() * item.getQuantidade());
-			pedido.setValorTotal(item.getValortotal());
+			
 		}
 		 
 		return dao.save(pedido);
@@ -72,26 +72,7 @@ public class PedidoServiceImpl implements IPedidoService {
 		}
 
 		return 0.0;
-	}
 
-	@Override
-	public String statusPedido(int valorStatus) {
-
-		switch (valorStatus) {
-
-		case 1: {
-			return "Em Preparo";
-		}
-		case 2: {
-			return "Finalizado";
-		}
-		case 3: {
-			return "Entregue";
-		}
-		default: {
-			return "NAO Encontrado";
-		}
-		}
 	}
 
 }
