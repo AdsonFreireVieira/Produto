@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.Produto.Dao.ClienteDAO;
+import br.com.Produto.Request.ClienteRequest;
+import br.com.Produto.Response.ClienteResponse;
 import br.com.Produto.model.Cliente;
 
 @Component
@@ -42,6 +44,18 @@ public class ServiceClienteImpl implements IClienteService {
 	public Cliente buscar(int id) {
 		
 		return dao.findById(id).orElse(null);
+	}
+
+	@Override
+	public ClienteResponse salvar(ClienteRequest clienteRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ClienteResponse alterar(ClienteRequest alterar) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

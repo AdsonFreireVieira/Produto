@@ -1,49 +1,36 @@
-package br.com.Produto.Response;
+package br.com.Produto.Request;
 
 
-public class ClienteResponse {
-
-	private Integer id;
-
-	private String nome;
-
-	private String email;
-
-	private int telefone;
-
-	private int cep;
-
-	private String endereco;
-
-	private String cidade;
-
-	private int numero;
-
-	public ClienteResponse() {
-
-	}
-    
+public class ClienteRequest {
 	
-	public ClienteResponse(Integer id, String nome, String email, int telefone, int cep, String endereco, String cidade,
-			int numero) {
-		this.id = id;
+	private String nome;
+	
+	private String email;
+	
+	private int telefone;
+	
+	private String endereco;
+	
+	private String cidade;
+	
+	private int  numero;
+	
+	public ClienteRequest() {
+		
+	}
+	public ClienteRequest(String nome, String email, int telefone, String endereco, String cidade, int numero) {
+	
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
-		this.cep = cep;
 		this.endereco = endereco;
 		this.cidade = cidade;
 		this.numero = numero;
 	}
 
 
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+
 
 	public String getNome() {
 		return nome;
@@ -69,14 +56,6 @@ public class ClienteResponse {
 		this.telefone = telefone;
 	}
 
-	public int getCep() {
-		return cep;
-	}
-
-	public void setCep(int cep) {
-		this.cep = cep;
-	}
-
 	public String getEndereco() {
 		return endereco;
 	}
@@ -100,5 +79,8 @@ public class ClienteResponse {
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
+	
+	
+	
 
 }

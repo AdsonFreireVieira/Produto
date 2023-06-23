@@ -2,7 +2,9 @@ package br.com.Produto.Controller;
 
 import java.util.List;
 
+import org.apache.coyote.http11.Http11InputBuffer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.Produto.Request.ClienteRequest;
+import br.com.Produto.Response.ClienteResponse;
+import br.com.Produto.mapper.ClienteMappper;
 import br.com.Produto.model.Cliente;
 import br.com.Produto.service.Cliente.IClienteService;
 
@@ -24,19 +29,22 @@ public class ClienteController {
 	private IClienteService service;
 
 	@PostMapping
-	public ResponseEntity<Cliente> cadastrarNovo(@RequestBody Cliente cliente) {
-
-		Cliente result = service.salvar(cliente);
-		if (result != null) {
-			return ResponseEntity.status(201).body(result);
-		} else {
-
-			return ResponseEntity.badRequest().build();
-		}
+	public ResponseEntity<ClienteResponse> cadastrarNovo(@RequestBody ClienteRequest request) {
+ 
+		
+		 ClienteResponse resp = service.salvar(request);
+	
+		 if(resp != null) {
+			 
+			 return ResponseEntity.ok().body(resp);
+		 }
+		 
+		 return ResponseEntity.notFound().build();
+		
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Cliente>  buscarporId(@PathVariable Integer id) {
+	public ResponseEntity<ClienteResponse>  buscarporId(@PathVariable Integer id) {
 
 		Cliente result = service.buscar(id);
 
@@ -50,14 +58,14 @@ public class ClienteController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Cliente>> getAll() {
+	public ResponseEntity<List<ClienteResponse>> getAll() {
 
 		return ResponseEntity.ok(service.listartodos());
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Cliente> alterar(@RequestBody Cliente cliente, @PathVariable Integer id) {
-		cliente.setId(id);
+	public ResponseEntity<ClienteResponse> alterar(@RequestBody Cliente  clienteRequest, @PathVariable Integer id) {
+		clienteRequest.setId(id);
 
 		try {
 			Cliente result = service.alterar(cliente);
