@@ -4,13 +4,14 @@ import java.util.List;
 
 import br.com.Produto.Request.ClienteRequest;
 import br.com.Produto.Response.ClienteResponse;
+import br.com.Produto.model.Cliente;
 
 public interface IClienteService {
 	
-	public ClienteResponse  salvar(ClienteRequest clienteRequest);
-	public ClienteResponse alterar(ClienteRequest alterar);
+	public Cliente  salvar(Cliente clienteRequest);
+	public Cliente alterar(Cliente alterar);
 	public void   deletar( int deleta);
-	public List<ClienteResponse> listartodos();
-	public ClienteResponse buscar(int id); 
+	public List<Cliente> listartodos();
+	public Cliente buscar(int id); 
 
 }

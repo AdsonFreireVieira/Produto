@@ -29,10 +29,10 @@ public class ClienteController {
 	private IClienteService service;
 
 	@PostMapping
-	public ResponseEntity<ClienteResponse> cadastrarNovo(@RequestBody ClienteRequest request) {
+	public ResponseEntity<Cliente> cadastrarNovo(@RequestBody Cliente request) {
  
 		
-		 ClienteResponse resp = service.salvar(request);
+		 Cliente resp = service.salvar(request);
 	
 		 if(resp != null) {
 			 
@@ -44,7 +44,7 @@ public class ClienteController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<ClienteResponse>  buscarporId(@PathVariable Integer id) {
+	public ResponseEntity<Cliente>  buscarporId(@PathVariable Integer id) {
 
 		Cliente result = service.buscar(id);
 
@@ -58,14 +58,14 @@ public class ClienteController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<ClienteResponse>> getAll() {
+	public ResponseEntity<List<Cliente>> getAll() {
 
 		return ResponseEntity.ok(service.listartodos());
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<ClienteResponse> alterar(@RequestBody Cliente  clienteRequest, @PathVariable Integer id) {
-		clienteRequest.setId(id);
+	public ResponseEntity<Cliente> alterar(@RequestBody Cliente  cliente, @PathVariable Integer id) {
+		cliente.setId(id);
 
 		try {
 			Cliente result = service.alterar(cliente);
