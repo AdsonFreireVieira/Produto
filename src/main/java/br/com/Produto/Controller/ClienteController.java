@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Produto.Request.ClienteRequest;
 import br.com.Produto.Response.ClienteResponse;
+import br.com.Produto.dto.ClienteDto;
 import br.com.Produto.mapper.ClienteMappper;
 import br.com.Produto.model.Cliente;
 import br.com.Produto.service.Cliente.IClienteService;
@@ -64,11 +65,11 @@ public class ClienteController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Cliente> alterar(@RequestBody Cliente  cliente, @PathVariable Integer id) {
-		cliente.setId(id);
+	public ResponseEntity<Cliente> alterar(@RequestBody ClienteDto  clientedto, @PathVariable Integer id) {
+		 
 
 		try {
-			Cliente result = service.alterar(cliente);
+			ClienteDto result = service.alterar(clientedto);
 			if (result != null) {
 				return ResponseEntity.ok(result);
 			}
