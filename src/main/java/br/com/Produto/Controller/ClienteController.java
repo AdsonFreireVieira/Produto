@@ -2,9 +2,7 @@ package br.com.Produto.Controller;
 
 import java.util.List;
 
-import org.apache.coyote.http11.Http11InputBuffer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.Produto.Request.ClienteRequest;
-import br.com.Produto.Response.ClienteResponse;
-import br.com.Produto.dto.ClienteDto;
-import br.com.Produto.mapper.ClienteMappper;
 import br.com.Produto.model.Cliente;
 import br.com.Produto.service.Cliente.IClienteService;
 
@@ -46,7 +40,7 @@ public class ClienteController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Cliente>  buscarporId(@PathVariable Integer id) {
-
+      
 		Cliente result = service.buscar(id);
 
 		if (result != null) {
@@ -65,11 +59,11 @@ public class ClienteController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Cliente> alterar(@RequestBody ClienteDto  clientedto, @PathVariable Integer id) {
+	public ResponseEntity<Cliente> alterar(@RequestBody Cliente cliente, @PathVariable Integer id) {
 		 
 
 		try {
-			ClienteDto result = service.alterar(clientedto);
+			Cliente result = service.alterar(cliente);
 			if (result != null) {
 				return ResponseEntity.ok(result);
 			}

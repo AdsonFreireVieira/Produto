@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.Produto.Dao.ClienteDAO;
-import br.com.Produto.Request.ClienteRequest;
-import br.com.Produto.Response.ClienteResponse;
+import br.com.Produto.dto.ClienteDto;
 import br.com.Produto.model.Cliente;
 
 @Component
@@ -17,13 +16,13 @@ public class ServiceClienteImpl implements IClienteService {
 	 private ClienteDAO dao;
 	
 	@Override
-	public Cliente salvar(Cliente cliente) {
+	public ClienteDto salvar(ClienteDto cliente) {
 		
 		return dao.save(cliente);
 	}
 
 	@Override
-	public Cliente alterar(Cliente alterar) {
+	public ClienteDto alterar(ClienteDto alterar) {
 		
 		return dao.save(alterar);
 	}
@@ -39,23 +38,11 @@ public class ServiceClienteImpl implements IClienteService {
 	public List<Cliente> listartodos() {
 		
 		return dao.findByOrderByNomeAsc();
-		}
+	}
+
 	@Override
-	public Cliente buscar(int id) {
-		
+	public ClienteDto buscar(int id) {
+		// TODO Auto-generated method stu
 		return dao.findById(id).orElse(null);
 	}
-
-	@Override
-	public ClienteResponse salvar(ClienteRequest clienteRequest) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ClienteResponse alterar(ClienteRequest alterar) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
