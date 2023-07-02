@@ -12,17 +12,16 @@ import br.com.Produto.model.Cliente;
 @Component
 public class ServiceClienteImpl implements IClienteService {
 
-	@Autowired
-	 private ClienteDAO dao;
+	private final ClienteDAO dao = null;
 	
 	@Override
-	public ClienteDto salvar(ClienteDto cliente) {
+	public Cliente salvar(Cliente cliente) {
 		
 		return dao.save(cliente);
 	}
 
 	@Override
-	public ClienteDto alterar(ClienteDto alterar) {
+	public Cliente alterar(Cliente alterar) {
 		
 		return dao.save(alterar);
 	}
@@ -41,7 +40,7 @@ public class ServiceClienteImpl implements IClienteService {
 	}
 
 	@Override
-	public ClienteDto buscar(int id) {
+	public Cliente buscar(int id) {
 		// TODO Auto-generated method stu
 		return dao.findById(id).orElse(null);
 	}

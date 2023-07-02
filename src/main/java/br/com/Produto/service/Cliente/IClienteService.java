@@ -2,15 +2,15 @@ package br.com.Produto.service.Cliente;
 
 import java.util.List;
 
-import br.com.Produto.dto.ClienteDto;
+import br.com.Produto.model.Cliente;
 
 
 public interface IClienteService {
 	
-	public ClienteDto  salvar(ClienteDto clienteDto);
-	public ClienteDto alterar(ClienteDto alterar);
+	public Cliente salvar(Cliente cliente);
+	public Cliente alterar(Cliente alterar);
 	public void   deletar( int deleta);
-	public List<ClienteDto> listartodos();
-	public ClienteDto buscar(int id); 
+	public List<Cliente> listartodos();
+	public Cliente buscar(int id); 
 
 }
