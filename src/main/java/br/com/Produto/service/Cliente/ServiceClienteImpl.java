@@ -2,10 +2,12 @@ package br.com.Produto.service.Cliente;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.Produto.Dao.ClienteDAO;
+import br.com.Produto.dto.ClienteDto;
 import br.com.Produto.model.Cliente;
 
 @Component
@@ -44,4 +46,18 @@ public class ServiceClienteImpl implements IClienteService {
 	
 		return dao.findById(id).orElse(null);
 	}
+
+	@Override
+	public ClienteDto ClienteMapper(Integer id) {
+		
+		Cliente cliente =  dao.findById(id).orElse(null);
+		
+		ModelMapper modelMapper = new ModelMapper();
+		
+		ClienteDto clienteDto = modelMapper.map(cliente, ClienteDto.class);
+		
+		return clienteDto;
+	}
+
+	
 }

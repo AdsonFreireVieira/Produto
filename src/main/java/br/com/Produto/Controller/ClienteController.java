@@ -49,7 +49,7 @@ public class ClienteController {
 	@GetMapping
 	public ResponseEntity<List<Cliente>> getAll() {
 
-		return ResponseEntity.ok(service.listartodos());
+		return ResponseEntity.ok().body(service.listartodos());
 	}
 
 	@PutMapping("/{id}")

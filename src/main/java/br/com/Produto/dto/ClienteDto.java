@@ -1,5 +1,34 @@
 package br.com.Produto.dto;
 
-public record ClienteDto(Integer id, int cep, String cidade,String email,String endereco,int telefone, int numero,String nome) {
 
+public class ClienteDto {
+	
+	private Integer id;
+	
+	
+	private String nome;
+	
+	
+	private String email;
+	
+	private int telefone;
+	
+	private int cep;
+	
+	
+	private String endereco;
+	
+	
+	private String cidade;
+	
+	
+	private int  numero;
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
 }
+	
+	
