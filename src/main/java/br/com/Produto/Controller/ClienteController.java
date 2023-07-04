@@ -39,17 +39,11 @@ public class ClienteController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Cliente>  buscarporId(@PathVariable Integer id) {
+	public  ResponseEntity<Cliente>  buscarporId(@PathVariable   int id) {
       
-		Cliente result = service.buscar(id);
-
-		if (result != null) {
-
-			return ResponseEntity.ok(result);
-		} else {
-
-			return ResponseEntity.notFound().build();
-		}
+	   
+	   return ResponseEntity.ok().body(service.buscar(id));
+		
 	}
 
 	@GetMapping
