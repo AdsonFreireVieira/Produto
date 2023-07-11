@@ -6,44 +6,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.Produto.Dao.ClienteDAO;
+import br.com.Produto.dto.ClienteDto;
 import br.com.Produto.model.Cliente;
 
 @Component
 public class ServiceClienteImpl implements IClienteService {
 
-	@Autowired
-	private ClienteDAO  dao;
+	 public ClienteDAO dao;
 	
 	@Override
-	public Cliente salvar(Cliente cliente) {
+	public ClienteDto salvar(ClienteDto clienteDto) {
 		// TODO Auto-generated method stub
-		return dao.save(cliente);
+	var cliente = dao.save(clienteDto);
 	}
 
 	@Override
-	public Cliente alterar(Cliente alterar) {
+	public ClienteDto alterar(ClienteDto alterar) {
 		// TODO Auto-generated method stub
-		return dao.save(alterar);
+		return null;
 	}
 
 	@Override
 	public void deletar(int deleta) {
-		dao.deleteById(deleta);
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List<Cliente> listartodos() {
+	public List<ClienteDto> listartodos() {
 		// TODO Auto-generated method stub
-		  return dao.findAll();
+		return null;
 	}
 
 	@Override
-	public Cliente buscar(int id) {
+	public ClienteDto buscar(int id) {
 		// TODO Auto-generated method stub
-		return dao.findById(id).orElse(null);
+		return null;
 	}
-	
-	
-	
+
 }
