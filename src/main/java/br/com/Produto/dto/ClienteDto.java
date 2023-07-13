@@ -12,6 +12,18 @@ public class ClienteDto {
 	public ClienteDto() {
 		
 	}
+	
+	
+
+	public ClienteDto(Integer id, String nome, String email, int telefone) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+	}
+
+
 
 	public ClienteDto(Cliente cliente) {
 		
